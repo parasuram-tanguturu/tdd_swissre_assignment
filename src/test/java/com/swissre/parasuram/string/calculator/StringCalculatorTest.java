@@ -17,4 +17,8 @@ public class StringCalculatorTest {
     public void shouldReturnNumberOnSingleNumberStringInput(){
         Assertions.assertEquals(7,StringCalculator.add("7"));
     }
+    @Test
+    public void shouldReturnSumOnTwoNumberWithCommaDelimiter(){
+        Assertions.assertEquals(10,StringCalculator.add("7,3"));
+    }
 }
