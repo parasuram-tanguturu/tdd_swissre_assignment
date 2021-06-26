@@ -21,4 +21,10 @@ public class StringCalculatorTest {
     public void shouldReturnSumOnTwoNumberWithCommaDelimiter(){
         Assertions.assertEquals(10,StringCalculator.add("7,3"));
     }
+    @Test
+    public void shouldReturnSumOnMultipleNumbersWithCommaDelimiter(){
+        Assertions.assertEquals(10,StringCalculator.add("5,3,2"));
+        Assertions.assertEquals(10,StringCalculator.add("3,2,3,2"));
+        Assertions.assertEquals(10,StringCalculator.add("1,2,2,3,2"));
+    }
 }
