@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 // -given string contains only numbers
 // -using delimiters : comma ,whitespace
 public class StringCalculator {
+
+
     public static int add(String input) {
         if(null==input || input.isEmpty()){
             return  0;
@@ -20,18 +22,22 @@ public class StringCalculator {
     }
     private static List<Integer> getListOfPositiveNumbersFromString(String input,String delimiter) {
         List<Integer> numbersList = Arrays.stream(input.split(delimiter))
-                .map(StringCalculator::toInt)
+                .map(Integer::valueOf)
                 .filter(num->num<100)
                 .collect(Collectors.toList());
         final List<Integer> negativeNumbersList = numbersList.stream().filter(n -> n < 0).collect(Collectors.toList());
         if(negativeNumbersList.size()>0){
-            throw new RuntimeException("negative numbers not allowed : "+negativeNumbersList.stream().map(String::valueOf).collect(Collectors.joining(",")));
+            throw new RuntimeException(Constants.NEGATIVE_NUMBERS_NOT_ALLOWED+negativeNumbersList.stream().map(String::valueOf).collect(Collectors.joining(",")));
         }else{
             return numbersList;
         }
     }
 
     private static int toInt(String input) {
-        return Integer.parseInt(input);
+        int i = Integer.parseInt(input);
+        if(i<0)
+            throw new RuntimeException(Constants.NEGATIVE_NUMBERS_NOT_ALLOWED+i);
+        else
+            return i;
     }
 }

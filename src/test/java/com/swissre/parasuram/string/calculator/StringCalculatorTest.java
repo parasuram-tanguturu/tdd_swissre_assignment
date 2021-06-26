@@ -40,13 +40,17 @@ public class StringCalculatorTest {
             StringCalculator.add("-1,2,3,4,-5");
             Assertions.fail("exception expected");
         }catch (RuntimeException ex){
-            Assertions.assertEquals("negative numbers not allowed : -1,-5",ex.getMessage());
+            Assertions.assertEquals(Constants.NEGATIVE_NUMBERS_NOT_ALLOWED+"-1,-5",ex.getMessage());
         }
     }
 
     @Test
-    public void shouldReturnSumIgnoringValuesGreaterThanHundread(){
-        Assertions.assertEquals(10,StringCalculator.add("5 3 2 120"));
-        Assertions.assertEquals(10,StringCalculator.add("3,2,3,2,111"));
+    public void shouldRaiseExceptionOnSingleNegativeNumber(){
+        try{
+            StringCalculator.add("-1");
+            Assertions.fail("exception expected");
+        }catch (RuntimeException ex){
+            Assertions.assertEquals(Constants.NEGATIVE_NUMBERS_NOT_ALLOWED+"-1",ex.getMessage());
+        }
     }
 }
