@@ -13,4 +13,8 @@ public class StringCalculatorTest {
     public void shouldReturnZeroOnNullString(){
         Assertions.assertEquals(0,StringCalculator.add(null));
     }
+    @Test
+    public void shouldReturnNumberOnSingleNumberStringInput(){
+        Assertions.assertEquals(7,StringCalculator.add("7"));
+    }
 }
