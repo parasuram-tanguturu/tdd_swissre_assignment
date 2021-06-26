@@ -43,4 +43,10 @@ public class StringCalculatorTest {
             Assertions.assertEquals("negative numbers not allowed : -1,-5",ex.getMessage());
         }
     }
+
+    @Test
+    public void shouldReturnSumIgnoringValuesGreaterThanHundread(){
+        Assertions.assertEquals(10,StringCalculator.add("5 3 2 120"));
+        Assertions.assertEquals(10,StringCalculator.add("3,2,3,2,111"));
+    }
 }

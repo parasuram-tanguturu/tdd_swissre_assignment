@@ -20,7 +20,9 @@ public class StringCalculator {
     }
     private static List<Integer> getListOfPositiveNumbersFromString(String input,String delimiter) {
         List<Integer> numbersList = Arrays.stream(input.split(delimiter))
-                .map(StringCalculator::toInt).collect(Collectors.toList());
+                .map(StringCalculator::toInt)
+                .filter(num->num<100)
+                .collect(Collectors.toList());
         final List<Integer> negativeNumbersList = numbersList.stream().filter(n -> n < 0).collect(Collectors.toList());
         if(negativeNumbersList.size()>0){
             throw new RuntimeException("negative numbers not allowed : "+negativeNumbersList.stream().map(String::valueOf).collect(Collectors.joining(",")));
